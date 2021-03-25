@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import { useParams, useHistory, Link } from 'react-router-dom';
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 
@@ -70,6 +69,7 @@ const cards = [1, 2, 3, 4];
 
 
 function RestaurantDetail() {
+  let history = useHistory();
   const dispatch = useDispatch();
   const { restaurants } = useSelector(state => state.restaurantStore);
   const [currentId, setCurrentId] = useState();
@@ -79,9 +79,14 @@ function RestaurantDetail() {
   
 
   useEffect(() => {
-    setCurrentId(id);
-    let restaurantFounded = restaurants.data.find(item => item.id = id)
-    setCurrentRestaurant(restaurantFounded);
+    if (restaurants.data == null){
+      history.push("/");
+    }else {
+      setCurrentId(id);
+      let restaurantFounded = restaurants.data.find(item => item.id = id)
+      setCurrentRestaurant(restaurantFounded);
+    }
+    
   }, []);
 
   useEffect(() => {
