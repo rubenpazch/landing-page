@@ -9,6 +9,10 @@ class Api::V1::CommentsController < ApplicationController
     end
   end
 
+  def index
+    render json: CommentSerializer.new(Comment.all).serializable_hash
+  end
+
   private
   def comment_params
     params.require(:comment).permit(:description, :commentDate, :usuario, :restaurant_id)
