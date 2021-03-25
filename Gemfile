@@ -54,3 +54,11 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem "faker", "~> 2.17"
+
+gem "fast_jsonapi", "~> 1.5"
+
+gem "rexml", "~> 3.2"
+
+gem "rdoc", "~> 6.3"
