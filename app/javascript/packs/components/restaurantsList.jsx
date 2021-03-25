@@ -79,36 +79,35 @@ export default function RestaurantList() {
   useEffect(() => {
     getRestaurantsAsync()
       .then(({ data }) => {
-        console.log({data});
         dispatch(setRestaurantListAction(data));
         setRestaurantList(data);
       })
       .catch(error => {
-        console.log("error")
+        console.log({error})
       });
     
       getCommentsAsync()
       .then(({ data }) => {
-        console.log({data});
+        
         dispatch(setCommentListAction(data));
         
       })
       .catch(error => {
-        console.log("error")
+        console.log({error})
       });
 
       getPicturesAsync()
       .then(({ data }) => {
-        console.log({data});
+        
         dispatch(setPictureListAction(data));
         
       })
       .catch(error => {
-        console.log("error")
+        console.log({error})
       });
   }, []);
 
-  console.log({restaurantList});
+
 
   return (
     <React.Fragment>
@@ -141,7 +140,8 @@ export default function RestaurantList() {
                 key={card.id}
                 title={card.attributes.title}
                 description={card.attributes.description}
-                pictures={card.relationships.pictures.data}
+                picturesArray={card.relationships.pictures.data}
+                id={card.id}
                />
             ))
             }

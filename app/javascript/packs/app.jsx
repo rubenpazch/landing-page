@@ -5,12 +5,19 @@ import {
   Route,
 } from 'react-router-dom';
 import RestaurantList from './components/restaurantsList'
-import Album from './components/theme'
+import RestaurantDetail from './components/restaurantDetail'
 
 function App() {
   return (
     <Router>
-      <RestaurantList/>
+      <Switch>
+        <Route exact path="/restaurantdetail/:id">
+          <RestaurantDetail />
+        </Route>
+        <Route path="/">
+          <RestaurantList/>
+        </Route>
+      </Switch>
     </Router>
   );
 }

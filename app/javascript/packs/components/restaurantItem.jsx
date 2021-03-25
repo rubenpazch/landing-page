@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
@@ -9,14 +10,22 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
-export default function RestaurantItem({title, description, pictures, id}) {
-
-  const { restaurants } = useSelector(state => state.picturesStore);
+export default function RestaurantItem({title, description, picturesArray, id}) {
+  const [localPictures, setLocalPictures] = useState();
+  const { pictures } = useSelector(state => state.picturesStore);
   
   useEffect(() => {
-    console.log("do somthing")
-  }, [restaurants]);
-
+    let tempArray = [];
+    if (pictures.data != null && picturesArray  != null){
+      let lenArray = picturesArray.length;
+      picturesArray.forEach(element => {
+        tempArray.push(pictures.data.find(item => item.id == element.id));
+        // element.id
+      });
+    }
+    setLocalPictures(tempArray[0].attributes.link);    
+  }, [pictures]);
+  
   const useStyles = makeStyles((theme) => ({
     icon: {
       marginRight: theme.spacing(2),
@@ -55,7 +64,7 @@ export default function RestaurantItem({title, description, pictures, id}) {
     <Card className={classes.card}>
       <CardMedia
         className={classes.cardMedia}
-        image={"pictures"}
+        image={localPictures}
         title="Image title"
       />
       <CardContent className={classes.cardContent}>
@@ -70,7 +79,9 @@ export default function RestaurantItem({title, description, pictures, id}) {
         <Button size="small" color="primary">
           View
         </Button>
-        
+        <Link to={`/restaurantdetail/${id}`}>
+          Click Me
+        </Link>
       </CardActions>
     </Card>
   </Grid>

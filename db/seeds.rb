@@ -28,6 +28,13 @@ r14 = Restaurant.create!(title: Faker::Restaurant.name, description: Faker::Rest
 r15 = Restaurant.create!(title: Faker::Restaurant.name, description: Faker::Restaurant.description)
 r16 = Restaurant.create!(title: Faker::Restaurant.name, description: Faker::Restaurant.description)
 r17 = Restaurant.create!(title: Faker::Restaurant.name, description: Faker::Restaurant.description)
+r18 = Restaurant.create!(title: Faker::Restaurant.name, description: Faker::Restaurant.description)
+r19 = Restaurant.create!(title: Faker::Restaurant.name, description: Faker::Restaurant.description)
+r20 = Restaurant.create!(title: Faker::Restaurant.name, description: Faker::Restaurant.description)
+r21 = Restaurant.create!(title: Faker::Restaurant.name, description: Faker::Restaurant.description)
+r22 = Restaurant.create!(title: Faker::Restaurant.name, description: Faker::Restaurant.description)
+r23 = Restaurant.create!(title: Faker::Restaurant.name, description: Faker::Restaurant.description)
+r24 = Restaurant.create!(title: Faker::Restaurant.name, description: Faker::Restaurant.description)
 
 (0..15).each do |i|
   Comment.create!(
@@ -183,6 +190,70 @@ end
   )
 end
 
+(0..15).each do |i|
+  Comment.create!(
+    description: Faker::Restaurant.review,
+    commentDate: Faker::Date.between(from: '2021-03-24', to: '2024-09-25'),
+    usuario: Faker::Alphanumeric.alpha(number: 10),
+    restaurant_id: r18.id
+  )
+end
+
+(0..15).each do |i|
+  Comment.create!(
+    description: Faker::Restaurant.review,
+    commentDate: Faker::Date.between(from: '2021-03-24', to: '2024-09-25'),
+    usuario: Faker::Alphanumeric.alpha(number: 10),
+    restaurant_id: r19.id
+  )
+end
+
+(0..15).each do |i|
+  Comment.create!(
+    description: Faker::Restaurant.review,
+    commentDate: Faker::Date.between(from: '2021-03-24', to: '2024-09-25'),
+    usuario: Faker::Alphanumeric.alpha(number: 10),
+    restaurant_id: r20.id
+  )
+end
+
+(0..15).each do |i|
+  Comment.create!(
+    description: Faker::Restaurant.review,
+    commentDate: Faker::Date.between(from: '2021-03-24', to: '2024-09-25'),
+    usuario: Faker::Alphanumeric.alpha(number: 10),
+    restaurant_id: r21.id
+  )
+end
+
+(0..15).each do |i|
+  Comment.create!(
+    description: Faker::Restaurant.review,
+    commentDate: Faker::Date.between(from: '2021-03-24', to: '2024-09-25'),
+    usuario: Faker::Alphanumeric.alpha(number: 10),
+    restaurant_id: r22.id
+  )
+end
+
+(0..15).each do |i|
+  Comment.create!(
+    description: Faker::Restaurant.review,
+    commentDate: Faker::Date.between(from: '2021-03-24', to: '2024-09-25'),
+    usuario: Faker::Alphanumeric.alpha(number: 10),
+    restaurant_id: r23.id
+  )
+end
+
+
+(0..15).each do |i|
+  Comment.create!(
+    description: Faker::Restaurant.review,
+    commentDate: Faker::Date.between(from: '2021-03-24', to: '2024-09-25'),
+    usuario: Faker::Alphanumeric.alpha(number: 10),
+    restaurant_id: r24.id
+  )
+end
+
 (0..4).each do |i|
   Picture.create!(link: Faker::Avatar.image, restaurant_id: r1.id)
 end
@@ -234,4 +305,27 @@ end
 (0..4).each do |i|
   Picture.create!(link: Faker::Avatar.image, restaurant_id: r17.id)
 end
+
+(0..4).each do |i|
+  Picture.create!(link: Faker::Avatar.image, restaurant_id: r18.id)
+end
+(0..4).each do |i|
+  Picture.create!(link: Faker::Avatar.image, restaurant_id: r19.id)
+end
+(0..4).each do |i|
+  Picture.create!(link: Faker::Avatar.image, restaurant_id: r20.id)
+end
+(0..4).each do |i|
+  Picture.create!(link: Faker::Avatar.image, restaurant_id: r21.id)
+end
+(0..4).each do |i|
+  Picture.create!(link: Faker::Avatar.image, restaurant_id: r22.id)
+end
+(0..4).each do |i|
+  Picture.create!(link: Faker::Avatar.image, restaurant_id: r23.id)
+end
+(0..4).each do |i|
+  Picture.create!(link: Faker::Avatar.image, restaurant_id: r24.id)
+end
+
 
