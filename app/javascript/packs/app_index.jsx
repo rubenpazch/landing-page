@@ -5,22 +5,15 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
-
-const Hello = props => (
-  <div>Hello {props.name}!</div>
-)
-
-Hello.defaultProps = {
-  name: 'David'
-}
-
-Hello.propTypes = {
-  name: PropTypes.string
-}
+import { Provider } from 'react-redux';
+import App from './app'
+import store from './redux/store';
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <Hello name="React" />,
+    <Provider store={store}>
+      <App/>
+    </Provider>,
     document.body.appendChild(document.createElement('div')),
   )
 })
