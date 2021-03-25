@@ -1,4 +1,5 @@
 class Api::V1::CommentsController < ApplicationController
+  # Only allow a trusted parameter "white list" through.
   def create
     @comment = Comment.new(comment_params)
     
