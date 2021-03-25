@@ -9,21 +9,26 @@ import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
+import { setCurrentPictures } from '../redux/actions/pictures.actions';
+import { setCurrentRestaurant } from '../redux/actions/restaurants.actions';
 
-export default function RestaurantItem({title, description, picturesArray, id}) {
+export default function RestaurantItem({title, description, picturesArray, id, itemRestaurant}) {
   const [localPictures, setLocalPictures] = useState();
   const { pictures } = useSelector(state => state.picturesStore);
+  const { restaurants } = useSelector(state => state.restaurantStore);
+  const dispatch = useDispatch();
   
   useEffect(() => {
     let tempArray = [];
-    if (pictures.data != null && picturesArray  != null){
+    if (pictures.data != null && picturesArray  != null ){
       let lenArray = picturesArray.length;
       picturesArray.forEach(element => {
         tempArray.push(pictures.data.find(item => item.id == element.id));
         // element.id
       });
     }
-    setLocalPictures(tempArray[0].attributes.link);    
+    setLocalPictures(tempArray[0].attributes.link);
+    
   }, [pictures]);
   
   const useStyles = makeStyles((theme) => ({

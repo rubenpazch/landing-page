@@ -63,6 +63,16 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper,
     padding: theme.spacing(6),
   },
+  button: {
+    background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+    border: 0,
+    borderRadius: 3,
+    boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+    color: 'white',
+    height: 48,
+    padding: '15px 30px',
+    textDecoration: 'none',
+  }
 }));
 
 const cards = [1, 2, 3, 4];
@@ -72,43 +82,41 @@ function RestaurantDetail() {
   let history = useHistory();
   const dispatch = useDispatch();
   const { restaurants } = useSelector(state => state.restaurantStore);
+  const { pictures } = useSelector(state => state.picturesStore);
   const [currentId, setCurrentId] = useState();
+  const [currentPictures, setCurrentPictures] = useState();
   const [currentRestaurant, setCurrentRestaurant] = useState();
   const { id } = useParams();  
   const classes = useStyles();
   
-
+  
   useEffect(() => {
     if (restaurants.data == null){
       history.push("/");
     }else {
+      
       setCurrentId(id);
-      let restaurantFounded = restaurants.data.find(item => item.id = id)
+      restaurants.data.shift();
+      const restaurantFounded = restaurants.data.find(item => item.id == id);
       setCurrentRestaurant(restaurantFounded);
+      const picturesFounded = pictures.data.filter(x => x.relationships.restaurant.data.id == id)
+      picturesFounded.shift();
+      setCurrentPictures(picturesFounded);
+      console.log({picturesFounded});
     }
     
-  }, []);
+  }, [id]);
 
-  useEffect(() => {
-    //if (tourdetail) {
-    //  settourDetailReceived(tourdetail);
-    //}
-  }, []);
-  // const { price } = tourDetailReceived;
+  
   return (
     <React.Fragment>
       <CssBaseline />
       <AppBar position="relative">
         <Toolbar>
           
-          <Typography variant="h6" color="inherit" noWrap>
-            { currentRestaurant == null
-            ? <span>no data</span>
-            : currentRestaurant.attributes.title
-            }
-          </Typography>
-          <Link to={'/'}>
-            Click Me
+          
+          <Link to={'/'} className={classes.button}>
+            <span>Back Home</span>
           </Link>  
         </Toolbar>
         
@@ -135,12 +143,15 @@ function RestaurantDetail() {
         <Container className={classes.cardGrid} maxWidth="md">
           {/* End hero unit */}
           <Grid container spacing={1}>
-            {cards.map((card) => (
+            { currentPictures== null
+            ? <span>no data</span>
+            :
+            currentPictures.map((card) => (
               <Grid item key={card} xs={12} sm={6} md={3}>
                 <Card className={classes.card}>
                   <CardMedia
                     className={classes.cardMedia}
-                    image="https://source.unsplash.com/random"
+                    image={card.attributes.link}
                     title="Image title"
                   />                  
                 </Card>

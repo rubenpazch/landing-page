@@ -70,8 +70,6 @@ const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 export default function RestaurantList() {
   const classes = useStyles();
-
-  const { restaurantStore } = useSelector(state => state.restaurantStore);
   const dispatch = useDispatch();
   const [restaurantList, setRestaurantList] = useState([]);
 
@@ -142,6 +140,7 @@ export default function RestaurantList() {
                 description={card.attributes.description}
                 picturesArray={card.relationships.pictures.data}
                 id={card.id}
+                itemRestaurant={card}
                />
             ))
             }

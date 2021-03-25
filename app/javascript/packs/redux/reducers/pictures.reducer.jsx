@@ -2,6 +2,7 @@ import * as actionsTypes from '../actionsType';
 
 const initialState = {
   pictures: [],
+  current_pictures: [],
 };
 
 const picturesReducer = (state = initialState, action) => {
@@ -11,7 +12,11 @@ const picturesReducer = (state = initialState, action) => {
         ...state,        
         pictures: action.pictures,
       };
-   
+    case actionsTypes.CURRENT_PICTURES:
+        return {
+          ...state,        
+          current_pictures: action.current_pictures,
+        };
     default:
       return state;
   }

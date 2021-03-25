@@ -2,6 +2,7 @@ import * as actionsTypes from '../actionsType';
 
 const initialState = {
   restaurants: [],
+  current_restaurant: [],
 };
 
 const restaurantReducer = (state = initialState, action) => {
@@ -10,6 +11,11 @@ const restaurantReducer = (state = initialState, action) => {
       return {
         ...state,        
         restaurants: action.restaurants,
+      };
+    case actionsTypes.FETCH_RESTAURANTS:
+      return {
+        ...state,        
+        current_restaurant: action.current_restaurant,
       };
    
     default:
