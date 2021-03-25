@@ -20,7 +20,7 @@ class Api::V1::CommentsControllerTest < ActionDispatch::IntegrationTest
     assert_response :created
   end
 
-  test 'should forbid create product' do
+  test 'should forbid create comment' do
     assert_no_difference('Comment.count') do
       post api_v1_comments_url, params: { comment: { 
         description: @comment.description, 
@@ -30,5 +30,9 @@ class Api::V1::CommentsControllerTest < ActionDispatch::IntegrationTest
     end
     assert_response :unprocessable_entity
   end
-
+  
+  test "should show comments" do
+    get api_v1_comments_url(), as: :json
+    assert_response :success
+  end
 end
