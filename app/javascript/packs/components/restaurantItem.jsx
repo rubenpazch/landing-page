@@ -81,9 +81,7 @@ export default function RestaurantItem({title, description, picturesArray, id, i
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small" color="primary">
-          View
-        </Button>
+        
         <Link to={`/restaurantdetail/${id}`}>
           Click Me
         </Link>

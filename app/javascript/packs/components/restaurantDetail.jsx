@@ -14,9 +14,12 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-// import Link from '@material-ui/core/Link';
+import styled from 'styled-components';
+import CommentItem from './commentsItem';
 
 //import getTourDetail from '../redux/services/tourdetail.service';
+
+
 
 
 function Copyright() {
@@ -83,8 +86,10 @@ function RestaurantDetail() {
   const dispatch = useDispatch();
   const { restaurants } = useSelector(state => state.restaurantStore);
   const { pictures } = useSelector(state => state.picturesStore);
+  const { comments } = useSelector(state => state.commentsStore);
   const [currentId, setCurrentId] = useState();
   const [currentPictures, setCurrentPictures] = useState();
+  const [currentComments, setCurrentComments] = useState();
   const [currentRestaurant, setCurrentRestaurant] = useState();
   const { id } = useParams();  
   const classes = useStyles();
@@ -100,6 +105,9 @@ function RestaurantDetail() {
       const restaurantFounded = restaurants.data.find(item => item.id == id);
       setCurrentRestaurant(restaurantFounded);
       const picturesFounded = pictures.data.filter(x => x.relationships.restaurant.data.id == id)
+      const commentsFounded = comments.data.filter(x => x.relationships.restaurant.data.id == id)
+      console.log({commentsFounded});
+      setCurrentComments(commentsFounded)
       picturesFounded.shift();
       setCurrentPictures(picturesFounded);
       console.log({picturesFounded});
@@ -158,6 +166,20 @@ function RestaurantDetail() {
               </Grid>
             ))}
           </Grid>
+        </Container>
+        <Container className={classes.cardGrid} maxWidth="md">
+          <h1>Comments</h1>
+         {
+            currentComments== null
+            ? <span>no hay comentarios</span>
+            : currentComments.map(item => (
+              <CommentItem
+                usuario={item.attributes.usuario}
+                dateComment={item.attributes.commentDate}
+                description={item.attributes.description}
+              />
+            ))
+         }
         </Container>
       </main>
       {/* Footer */}

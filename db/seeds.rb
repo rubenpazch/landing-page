@@ -39,7 +39,7 @@ r24 = Restaurant.create!(title: Faker::Restaurant.name, description: Faker::Rest
 (0..15).each do |i|
   Comment.create!(
     description: Faker::Restaurant.review,
-    commentDate: Faker::Date.between(from: '2021-03-24', to: '2024-09-25'),
+    commentDate: Faker::Date.between(from: '2018-03-24', to: '2021-03-25'),
     usuario: Faker::Alphanumeric.alpha(number: 10),
     restaurant_id: r1.id
   )
@@ -48,7 +48,7 @@ end
 (0..15).each do |i|
   Comment.create!(
     description: Faker::Restaurant.review,
-    commentDate: Faker::Date.between(from: '2021-03-24', to: '2024-09-25'),
+    commentDate: Faker::Date.between(from: '2018-03-24', to: '2021-03-25'),
     usuario: Faker::Alphanumeric.alpha(number: 10),
     restaurant_id: r2.id
   )
@@ -57,7 +57,7 @@ end
 (0..15).each do |i|
   Comment.create!(
     description: Faker::Restaurant.review,
-    commentDate: Faker::Date.between(from: '2021-03-24', to: '2024-09-25'),
+    commentDate: Faker::Date.between(from: '2018-03-24', to: '2021-03-25'),
     usuario: Faker::Alphanumeric.alpha(number: 10),
     restaurant_id: r3.id
   )
@@ -66,7 +66,7 @@ end
 (0..15).each do |i|
   Comment.create!(
     description: Faker::Restaurant.review,
-    commentDate: Faker::Date.between(from: '2021-03-24', to: '2024-09-25'),
+    commentDate: Faker::Date.between(from: '2018-03-24', to: '2021-03-25'),
     usuario: Faker::Alphanumeric.alpha(number: 10),
     restaurant_id: r4.id
   )
@@ -75,7 +75,7 @@ end
 (0..15).each do |i|
   Comment.create!(
     description: Faker::Restaurant.review,
-    commentDate: Faker::Date.between(from: '2021-03-24', to: '2024-09-25'),
+    commentDate: Faker::Date.between(from: '2018-03-24', to: '2021-03-25'),
     usuario: Faker::Alphanumeric.alpha(number: 10),
     restaurant_id: r5.id
   )
@@ -84,7 +84,7 @@ end
 (0..15).each do |i|
   Comment.create!(
     description: Faker::Restaurant.review,
-    commentDate: Faker::Date.between(from: '2021-03-24', to: '2024-09-25'),
+    commentDate: Faker::Date.between(from: '2018-03-24', to: '2021-03-25'),
     usuario: Faker::Alphanumeric.alpha(number: 10),
     restaurant_id: r6.id
   )
@@ -93,7 +93,7 @@ end
 (0..15).each do |i|
   Comment.create!(
     description: Faker::Restaurant.review,
-    commentDate: Faker::Date.between(from: '2021-03-24', to: '2024-09-25'),
+    commentDate: Faker::Date.between(from: '2018-03-24', to: '2021-03-25'),
     usuario: Faker::Alphanumeric.alpha(number: 10),
     restaurant_id: r7.id
   )
@@ -102,7 +102,7 @@ end
 (0..15).each do |i|
   Comment.create!(
     description: Faker::Restaurant.review,
-    commentDate: Faker::Date.between(from: '2021-03-24', to: '2024-09-25'),
+    commentDate: Faker::Date.between(from: '2018-03-24', to: '2021-03-25'),
     usuario: Faker::Alphanumeric.alpha(number: 10),
     restaurant_id: r8.id
   )
@@ -111,7 +111,7 @@ end
 (0..15).each do |i|
   Comment.create!(
     description: Faker::Restaurant.review,
-    commentDate: Faker::Date.between(from: '2021-03-24', to: '2024-09-25'),
+    commentDate: Faker::Date.between(from: '2018-03-24', to: '2021-03-25'),
     usuario: Faker::Alphanumeric.alpha(number: 10),
     restaurant_id: r9.id
   )
@@ -120,7 +120,7 @@ end
 (0..15).each do |i|
   Comment.create!(
     description: Faker::Restaurant.review,
-    commentDate: Faker::Date.between(from: '2021-03-24', to: '2024-09-25'),
+    commentDate: Faker::Date.between(from: '2018-03-24', to: '2021-03-25'),
     usuario: Faker::Alphanumeric.alpha(number: 10),
     restaurant_id: r10.id
   )
@@ -129,7 +129,7 @@ end
 (0..15).each do |i|
   Comment.create!(
     description: Faker::Restaurant.review,
-    commentDate: Faker::Date.between(from: '2021-03-24', to: '2024-09-25'),
+    commentDate: Faker::Date.between(from: '2018-03-24', to: '2021-03-25'),
     usuario: Faker::Alphanumeric.alpha(number: 10),
     restaurant_id: r11.id
   )
@@ -138,7 +138,7 @@ end
 (0..15).each do |i|
   Comment.create!(
     description: Faker::Restaurant.review,
-    commentDate: Faker::Date.between(from: '2021-03-24', to: '2024-09-25'),
+    commentDate: Faker::Date.between(from: '2018-03-24', to: '2021-03-25'),
     usuario: Faker::Alphanumeric.alpha(number: 10),
     restaurant_id: r12.id
   )
@@ -148,7 +148,7 @@ end
 (0..15).each do |i|
   Comment.create!(
     description: Faker::Restaurant.review,
-    commentDate: Faker::Date.between(from: '2021-03-24', to: '2024-09-25'),
+    commentDate: Faker::Date.between(from: '2018-03-24', to: '2021-03-25'),
     usuario: Faker::Alphanumeric.alpha(number: 10),
     restaurant_id: r13.id
   )
@@ -157,7 +157,7 @@ end
 (0..15).each do |i|
   Comment.create!(
     description: Faker::Restaurant.review,
-    commentDate: Faker::Date.between(from: '2021-03-24', to: '2024-09-25'),
+    commentDate: Faker::Date.between(from: '2018-03-24', to: '2021-03-25'),
     usuario: Faker::Alphanumeric.alpha(number: 10),
     restaurant_id: r14.id
   )
@@ -166,7 +166,7 @@ end
 (0..15).each do |i|
   Comment.create!(
     description: Faker::Restaurant.review,
-    commentDate: Faker::Date.between(from: '2021-03-24', to: '2024-09-25'),
+    commentDate: Faker::Date.between(from: '2018-03-24', to: '2021-03-25'),
     usuario: Faker::Alphanumeric.alpha(number: 10),
     restaurant_id: r15.id
   )
@@ -175,7 +175,7 @@ end
 (0..15).each do |i|
   Comment.create!(
     description: Faker::Restaurant.review,
-    commentDate: Faker::Date.between(from: '2021-03-24', to: '2024-09-25'),
+    commentDate: Faker::Date.between(from: '2018-03-24', to: '2021-03-25'),
     usuario: Faker::Alphanumeric.alpha(number: 10),
     restaurant_id: r16.id
   )
@@ -184,7 +184,7 @@ end
 (0..15).each do |i|
   Comment.create!(
     description: Faker::Restaurant.review,
-    commentDate: Faker::Date.between(from: '2021-03-24', to: '2024-09-25'),
+    commentDate: Faker::Date.between(from: '2018-03-24', to: '2021-03-25'),
     usuario: Faker::Alphanumeric.alpha(number: 10),
     restaurant_id: r17.id
   )
@@ -193,7 +193,7 @@ end
 (0..15).each do |i|
   Comment.create!(
     description: Faker::Restaurant.review,
-    commentDate: Faker::Date.between(from: '2021-03-24', to: '2024-09-25'),
+    commentDate: Faker::Date.between(from: '2018-03-24', to: '2021-03-25'),
     usuario: Faker::Alphanumeric.alpha(number: 10),
     restaurant_id: r18.id
   )
@@ -202,7 +202,7 @@ end
 (0..15).each do |i|
   Comment.create!(
     description: Faker::Restaurant.review,
-    commentDate: Faker::Date.between(from: '2021-03-24', to: '2024-09-25'),
+    commentDate: Faker::Date.between(from: '2018-03-24', to: '2021-03-25'),
     usuario: Faker::Alphanumeric.alpha(number: 10),
     restaurant_id: r19.id
   )
@@ -211,7 +211,7 @@ end
 (0..15).each do |i|
   Comment.create!(
     description: Faker::Restaurant.review,
-    commentDate: Faker::Date.between(from: '2021-03-24', to: '2024-09-25'),
+    commentDate: Faker::Date.between(from: '2018-03-24', to: '2021-03-25'),
     usuario: Faker::Alphanumeric.alpha(number: 10),
     restaurant_id: r20.id
   )
@@ -220,7 +220,7 @@ end
 (0..15).each do |i|
   Comment.create!(
     description: Faker::Restaurant.review,
-    commentDate: Faker::Date.between(from: '2021-03-24', to: '2024-09-25'),
+    commentDate: Faker::Date.between(from: '2018-03-24', to: '2021-03-25'),
     usuario: Faker::Alphanumeric.alpha(number: 10),
     restaurant_id: r21.id
   )
@@ -229,7 +229,7 @@ end
 (0..15).each do |i|
   Comment.create!(
     description: Faker::Restaurant.review,
-    commentDate: Faker::Date.between(from: '2021-03-24', to: '2024-09-25'),
+    commentDate: Faker::Date.between(from: '2018-03-24', to: '2021-03-25'),
     usuario: Faker::Alphanumeric.alpha(number: 10),
     restaurant_id: r22.id
   )
@@ -238,7 +238,7 @@ end
 (0..15).each do |i|
   Comment.create!(
     description: Faker::Restaurant.review,
-    commentDate: Faker::Date.between(from: '2021-03-24', to: '2024-09-25'),
+    commentDate: Faker::Date.between(from: '2018-03-24', to: '2021-03-25'),
     usuario: Faker::Alphanumeric.alpha(number: 10),
     restaurant_id: r23.id
   )
@@ -248,7 +248,7 @@ end
 (0..15).each do |i|
   Comment.create!(
     description: Faker::Restaurant.review,
-    commentDate: Faker::Date.between(from: '2021-03-24', to: '2024-09-25'),
+    commentDate: Faker::Date.between(from: '2018-03-24', to: '2021-03-25'),
     usuario: Faker::Alphanumeric.alpha(number: 10),
     restaurant_id: r24.id
   )
