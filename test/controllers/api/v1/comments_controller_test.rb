@@ -12,8 +12,7 @@ class Api::V1::CommentsControllerTest < ActionDispatch::IntegrationTest
   test 'should create a comment' do
     assert_difference('Comment.count')do
       post api_v1_comments_url, params: { comment: { 
-        description: @comment.description, 
-        commentDate: @comment.commentDate, 
+        description: @comment.description,         
         usuario: @comment.usuario,
         restaurant_id: @restaurant.id }}, as: :json
     end
