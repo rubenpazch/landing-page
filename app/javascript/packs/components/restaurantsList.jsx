@@ -123,7 +123,7 @@ export default function RestaurantList() {
         <div className={classes.heroContent}>
           <Container maxWidth="sm">
             <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-              Restaurant <br/>The Peruvian
+              Top Restaurant <br/>
             </Typography>
           </Container>
         </div>

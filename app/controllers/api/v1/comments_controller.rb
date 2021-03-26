@@ -1,7 +1,7 @@
 class Api::V1::CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
-    
+    @comment.commentDate = Time.now
     if @comment.save
       render json: CommentSerializer.new(@comment).serializable_hash, status: :created
     else
@@ -15,6 +15,6 @@ class Api::V1::CommentsController < ApplicationController
 
   private
   def comment_params
-    params.require(:comment).permit(:description, :commentDate, :usuario, :restaurant_id)
+    params.require(:comment).permit(:description,  :usuario, :restaurant_id)
   end
 end

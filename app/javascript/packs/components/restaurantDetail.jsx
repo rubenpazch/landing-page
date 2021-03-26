@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory, Link } from 'react-router-dom';
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
-
+import TextField from '@material-ui/core/TextField';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
@@ -16,6 +16,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import styled from 'styled-components';
 import CommentItem from './commentsItem';
+import {saveComment} from '../services/comment.service';
+
 
 //import getTourDetail from '../redux/services/tourdetail.service';
 
@@ -75,7 +77,13 @@ const useStyles = makeStyles((theme) => ({
     height: 48,
     padding: '15px 30px',
     textDecoration: 'none',
-  }
+  },
+  multiline: {
+    '& .MuiTextField-root': {
+      margin: theme.spacing(1),
+      width: '25ch',
+    },
+  },
 }));
 
 const cards = [1, 2, 3, 4];
@@ -91,10 +99,18 @@ function RestaurantDetail() {
   const [currentPictures, setCurrentPictures] = useState();
   const [currentComments, setCurrentComments] = useState();
   const [currentRestaurant, setCurrentRestaurant] = useState();
+  const [usuario, setUsuario] = useState("");
+  const [comentario, setComentario] = useState("");
   const { id } = useParams();  
   const classes = useStyles();
   
-  
+  const changeUsuario = (e) =>{
+    setUsuario(e.target.value);
+  }
+
+  const changeComment = (e) => {
+    setComentario(e.target.value);
+  }
   useEffect(() => {
     if (restaurants.data == null){
       history.push("/");
@@ -106,14 +122,40 @@ function RestaurantDetail() {
       setCurrentRestaurant(restaurantFounded);
       const picturesFounded = pictures.data.filter(x => x.relationships.restaurant.data.id == id)
       const commentsFounded = comments.data.filter(x => x.relationships.restaurant.data.id == id)
-      console.log({commentsFounded});
+      
       setCurrentComments(commentsFounded)
       picturesFounded.shift();
       setCurrentPictures(picturesFounded);
-      console.log({picturesFounded});
+      
     }
     
   }, [id]);
+
+  
+  const handleSubmitModal = (e) => {
+    e.preventDefault();
+
+    saveComment(usuario, comentario, id)
+    .then(({ response, data }) => {
+      if (typeof (data) !== 'undefined') {
+        // notifySuccess('The appointment was successfully registered');
+        history.push('/Appointments');
+      }
+      if (typeof (response) !== 'undefined') {
+        if (response.status === 422) {
+          notifyError(`Error: ${getTextFromObject(response.request.responseText)}`);
+        } else if (response.status === 200) {
+          // notifySuccess('The appointment was successfully registered');
+          handleClose();
+        } else {
+          notifyError('else paso algo');
+        }
+      }
+    })
+    .catch(error => {
+      console.log({error});
+    });
+  };
 
   
   return (
@@ -132,7 +174,7 @@ function RestaurantDetail() {
       <main>
         {/* Hero unit */}
         <div className={classes.heroContent}>
-          <Container maxWidth="sm">
+          <Container maxWidth="md">
             <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
             { currentRestaurant == null
             ? <span>no data</span>
@@ -155,7 +197,7 @@ function RestaurantDetail() {
             ? <span>no data</span>
             :
             currentPictures.map((card) => (
-              <Grid item key={card} xs={12} sm={6} md={3}>
+              <Grid item key={card.id} xs={12} sm={6} md={3}>
                 <Card className={classes.card}>
                   <CardMedia
                     className={classes.cardMedia}
@@ -174,12 +216,34 @@ function RestaurantDetail() {
             ? <span>no hay comentarios</span>
             : currentComments.map(item => (
               <CommentItem
+                key={item.id}
                 usuario={item.attributes.usuario}
                 dateComment={item.attributes.commentDate}
                 description={item.attributes.description}
               />
             ))
          }
+        
+        </Container>
+        <Container className={classes.cardGrid} maxWidth="md">
+          <h1>New Comment</h1>
+          <TextField id="standard-basic" label="Usuario" onChange={ changeUsuario } value={ usuario }/>
+          <br /><br /><br />
+          <TextField
+          id="outlined-multiline-static"
+          label="Comentario"
+          multiline
+          rows={4}
+          defaultValue="Default Value"
+          variant="outlined"
+          className={classes.multiline}
+          onChange={changeComment}
+          value={comentario}
+        />
+      <br /><br /><br />
+      <Button variant="contained" color="primary" onClick={handleSubmitModal} type="submit">
+        Save
+      </Button>
         </Container>
       </main>
       {/* Footer */}

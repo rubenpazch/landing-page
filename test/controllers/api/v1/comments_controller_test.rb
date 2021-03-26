@@ -23,8 +23,7 @@ class Api::V1::CommentsControllerTest < ActionDispatch::IntegrationTest
   test 'should forbid create comment' do
     assert_no_difference('Comment.count') do
       post api_v1_comments_url, params: { comment: { 
-        description: @comment.description, 
-        commentDate: @comment.commentDate, 
+        description: @comment.description,         
         usuario: @comment.usuario,
         restaurant_id: -1 }}, as: :json
     end
